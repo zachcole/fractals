@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fractal</title>
+	</head>
+	<body>
+	
+		<canvas id="fractal_canvas" width="200px" height="200px"></canvas>
+
+		<button id="btn0" onClick="BaseTriangle(ctx);">0</button>
+		<button id="btn1" onclick="BaseTriangle(ctx); Sierpinski(1);">1</button>
+		<button id="btn2" onclick="BaseTriangle(ctx); Sierpinski(2);">2</button>
+		<button id="btn3" onclick="BaseTriangle(ctx); Sierpinski(3);">3</button>
+		<button id="btn4" onclick="BaseTriangle(ctx); Sierpinski(4);">4</button>
+		<button id="btn5" onclick="BaseTriangle(ctx); Sierpinski(5);">5</button>
+		<button id="btn6" onclick="BaseTriangle(ctx); Sierpinski(6);">6</button>
+		<button id="btn7" onclick="BaseTriangle(ctx); Sierpinski(7);">7</button>
+		<button id="btn8" onclick="BaseTriangle(ctx); Sierpinski(8);">8</button>
+		<button id="btn9" onclick="BaseTriangle(ctx); Sierpinski(9);">9</button>
+		<button id="btn10" onclick="BaseTriangle(ctx); Sierpinski(10);">10</button>
+		
+		<script>
+			var can = document.getElementById("fractal_canvas");
+			var ctx = can.getContext("2d");
+			var b = document.getElementById("go");
+			var d = document.getElementById("depth_select");
+			var depth = d.options[d.selectedIndex].value;
+			
+			drawTriangle(0,100*Math.sqrt(3),200,100*Math.sqrt(3),100,0,ctx);
+			
+			function BaseTriangle(ctx){
+				ctx.fillStyle="#000000";
+				drawTriangle(0,100*Math.sqrt(3),200,100*Math.sqrt(3),100,0,ctx);
+			}
+			
+			function Sierpinski(depth){
+				ctx.fillStyle="#ffffff";
+				removeCenter(0,100*Math.sqrt(3),200,100*Math.sqrt(3),100,0,depth,ctx);
+			}
+			
+			function drawTriangle(x0, y0, x1, y1, x2, y2, ctx){
+				ctx.beginPath();
+				ctx.moveTo(x0, y0);
+				ctx.lineTo(x1, y1);
+				ctx.lineTo(x2, y2);
+				ctx.lineTo(x0, y0);
+				ctx.fill();
+			}
+			
+			function removeCenter(x0, y0, x1, y1, x2, y2, depth, ctx){
+				if (depth > 0){
+					//variables that hold the midpoint coordinates for each side of the triangle.
+					var x01 = (x0 + x1)/2, y01 = (y0 + y1)/2;
+					var x02 = (x0 + x2)/2, y02 = (y0 + y2)/2;
+					var x12 = (x1 + x2)/2, y12 = (y1 + y2)/2;
+					drawTriangle(x01, y01, x02, y02, x12, y12, ctx);
+					
+					//recursively remove center triangles.
+					if(depth > 1){
+						removeCenter(x0, y0, x01, y01, x02, y02, depth-1, ctx);
+						removeCenter(x01, y01, x1, y1, x12, y12, depth-1, ctx);
+						removeCenter(x02, y02, x12, y12, x2, y2, depth-1, ctx);
+					}
+				}
+			}
+			
+			
+		</script>
+		
+	</body>
+</html>
