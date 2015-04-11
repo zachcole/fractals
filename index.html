@@ -18,6 +18,7 @@
 		<button id="btn8" onclick="BaseTriangle(ctx); Sierpinski(8);">8</button>
 		<button id="btn9" onclick="BaseTriangle(ctx); Sierpinski(9);">9</button>
 		<button id="btn10" onclick="BaseTriangle(ctx); Sierpinski(10);">10</button>
+		<button id="btnanimate" onclick="Animate(ctx);">Animate</button>
 		
 		<script>
 			var can = document.getElementById("fractal_canvas");
@@ -59,6 +60,22 @@
 						removeCenter(x02, y02, x12, y12, x2, y2, depth-1, ctx);
 					}
 				}
+				
+			}
+			
+			function Animate(ctx){
+				BaseTriangle(ctx);
+				
+				(function theLoop (i) {
+					setTimeout(function () {
+						Sierpinski(i);
+						i++;
+						if (i < 10) {          // If i > 0, keep going
+							theLoop(i);       // Call the loop again, and pass it the current value of i
+						}
+					}, 1000);
+				})(1);
+				
 			}
 			
 			
