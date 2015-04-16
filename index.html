@@ -4,81 +4,159 @@
 		<title>Fractal</title>
 	</head>
 	<body>
-	
-		<canvas id="fractal_canvas" width="200px" height="200px"></canvas>
-
-		<button id="btn0" onClick="BaseTriangle(ctx);">0</button>
-		<button id="btn1" onclick="BaseTriangle(ctx); Sierpinski(1);">1</button>
-		<button id="btn2" onclick="BaseTriangle(ctx); Sierpinski(2);">2</button>
-		<button id="btn3" onclick="BaseTriangle(ctx); Sierpinski(3);">3</button>
-		<button id="btn4" onclick="BaseTriangle(ctx); Sierpinski(4);">4</button>
-		<button id="btn5" onclick="BaseTriangle(ctx); Sierpinski(5);">5</button>
-		<button id="btn6" onclick="BaseTriangle(ctx); Sierpinski(6);">6</button>
-		<button id="btn7" onclick="BaseTriangle(ctx); Sierpinski(7);">7</button>
-		<button id="btn8" onclick="BaseTriangle(ctx); Sierpinski(8);">8</button>
-		<button id="btn9" onclick="BaseTriangle(ctx); Sierpinski(9);">9</button>
-		<button id="btn10" onclick="BaseTriangle(ctx); Sierpinski(10);">10</button>
-		<button id="btnanimate" onclick="Animate(ctx);">Animate</button>
 		
-		<script>
-			var can = document.getElementById("fractal_canvas");
-			var ctx = can.getContext("2d");
+		<div>
+			<canvas id="sierpinski_canvas" width="200px" height="200px"></canvas>
+
+			<button id="btn0" onClick="BaseTriangle(sctx);">0</button>
+			<button id="btn1" onclick="BaseTriangle(sctx); Sierpinski(1);">1</button>
+			<button id="btn2" onclick="BaseTriangle(sctx); Sierpinski(2);">2</button>
+			<button id="btn3" onclick="BaseTriangle(sctx); Sierpinski(3);">3</button>
+			<button id="btn4" onclick="BaseTriangle(sctx); Sierpinski(4);">4</button>
+			<button id="btn5" onclick="BaseTriangle(sctx); Sierpinski(5);">5</button>
+			<button id="btn6" onclick="BaseTriangle(sctx); Sierpinski(6);">6</button>
+			<button id="btn7" onclick="BaseTriangle(sctx); Sierpinski(7);">7</button>
+			<button id="btn8" onclick="BaseTriangle(sctx); Sierpinski(8);">8</button>
+			<button id="btn9" onclick="BaseTriangle(sctx); Sierpinski(9);">9</button>
+			<button id="btn10" onclick="BaseTriangle(sctx); Sierpinski(10);">10</button>
+			<button id="btnanimate" onclick="Animate(sctx);">Animate</button>
 			
-			drawTriangle(0,100*Math.sqrt(3),200,100*Math.sqrt(3),100,0,ctx);
-			
-			function BaseTriangle(ctx){
-				ctx.fillStyle="#000000";
-				drawTriangle(0,100*Math.sqrt(3),200,100*Math.sqrt(3),100,0,ctx);
-			}
-			
-			function Sierpinski(depth){
-				ctx.fillStyle="#ffffff";
-				removeCenter(0,100*Math.sqrt(3),200,100*Math.sqrt(3),100,0,depth,ctx);
-			}
-			
-			function drawTriangle(x0, y0, x1, y1, x2, y2, ctx){
-				ctx.beginPath();
-				ctx.moveTo(x0, y0);
-				ctx.lineTo(x1, y1);
-				ctx.lineTo(x2, y2);
-				ctx.lineTo(x0, y0);
-				ctx.fill();
-			}
-			
-			function removeCenter(x0, y0, x1, y1, x2, y2, depth, ctx){
-				if (depth > 0){
-					//variables that hold the midpoint coordinates for each side of the triangle.
-					var x01 = (x0 + x1)/2, y01 = (y0 + y1)/2;
-					var x02 = (x0 + x2)/2, y02 = (y0 + y2)/2;
-					var x12 = (x1 + x2)/2, y12 = (y1 + y2)/2;
-					drawTriangle(x01, y01, x02, y02, x12, y12, ctx);
-					
-					//recursively remove center triangles.
-					if(depth > 1){
-						removeCenter(x0, y0, x01, y01, x02, y02, depth-1, ctx);
-						removeCenter(x01, y01, x1, y1, x12, y12, depth-1, ctx);
-						removeCenter(x02, y02, x12, y12, x2, y2, depth-1, ctx);
-					}
+			<script>
+				var scan = document.getElementById("sierpinski_canvas");
+				var sctx = scan.getContext("2d");
+				
+				BaseTriangle(sctx);
+				
+				function BaseTriangle(sctx){
+					sctx.fillStyle="#000000";
+					drawTriangle(0,100*Math.sqrt(3),200,100*Math.sqrt(3),100,0,sctx);
 				}
 				
-			}
-			
-			function Animate(ctx){
-				BaseTriangle(ctx);
+				function Sierpinski(depth){
+					sctx.fillStyle="#ffffff";
+					removeCenter(0,100*Math.sqrt(3),200,100*Math.sqrt(3),100,0,depth,sctx);
+				}
 				
-				(function theLoop (i) {
-					setTimeout(function () {
-						Sierpinski(i);
-						i++;
-						if (i < 10) {          // If i > 0, keep going
-							theLoop(i);       // Call the loop again, and pass it the current value of i
+				function drawTriangle(x0, y0, x1, y1, x2, y2, sctx){
+					sctx.beginPath();
+					sctx.moveTo(x0, y0);
+					sctx.lineTo(x1, y1);
+					sctx.lineTo(x2, y2);
+					sctx.lineTo(x0, y0);
+					sctx.fill();
+				}
+				
+				function removeCenter(x0, y0, x1, y1, x2, y2, depth, sctx){
+					if (depth > 0){
+						//variables that hold the midpoint coordinates for each side of the triangle.
+						var x01 = (x0 + x1)/2, y01 = (y0 + y1)/2;
+						var x02 = (x0 + x2)/2, y02 = (y0 + y2)/2;
+						var x12 = (x1 + x2)/2, y12 = (y1 + y2)/2;
+						drawTriangle(x01, y01, x02, y02, x12, y12, sctx);
+						
+						//recursively remove center triangles.
+						if(depth > 1){
+							removeCenter(x0, y0, x01, y01, x02, y02, depth-1, sctx);
+							removeCenter(x01, y01, x1, y1, x12, y12, depth-1, sctx);
+							removeCenter(x02, y02, x12, y12, x2, y2, depth-1, sctx);
 						}
-					}, 1000);
-				})(1);
+					}
+					
+				}
 				
+				function Animate(sctx){
+					BaseTriangle(sctx);
+					
+					(function theLoop (i) {
+						setTimeout(function () {
+							Sierpinski(i);
+							i++;
+							if (i < 10) {          // If i < 10, keep going
+								theLoop(i);       // Call the loop again, and pass it the current value of i
+							}
+						}, 1000);
+					})(1);
+					
+				}
+				
+				
+			</script>
+		</div>
+		
+		<canvas width="500px" height="500px" id="pytree_canvas"></canvas>
+		
+		<button onclick="PyTree(0);">0</button>
+		<button onclick="PyTree(1);">1</button>
+		<button onclick="PyTree(2);">2</button>
+		<button onclick="PyTree(3);">3</button>
+		
+		<script>
+		
+			var pcan = document.getElementById("pytree_canvas");
+			var pctx = pcan.getContext("2d");
+			
+			baseSquare();
+			
+			
+			function baseSquare(){
+				drawSquare(200,400,200,300,300,300,300,400, pctx);
 			}
 			
+			function itOne(){
+				drawSquare(200,300,150,250,200,200,250,250, pctx);
+				drawSquare(250,250,300,200,350,250,300,300, pctx);
+			}
 			
+			function itTwo(){
+				drawSquare(150,250,100,250,100,200,150,200, pctx);
+				drawSquare(150,200,150,150,200,150,200,200, pctx);
+				drawSquare(300,200,300,150,350,150,350,200, pctx);
+				drawSquare(350,200,400,200,400,250,350,250, pctx);
+			}
+			
+			function itThree(){
+				drawSquare(100,250,75,275,50,250,75,225, pctx);
+				drawSquare(75,225,50,200,75,175,100,200, pctx);
+				drawSquare(150,150,125,125,150,100,175,125, pctx);
+				drawSquare(175,125,200,100,225,125,200,150, pctx);
+				drawSquare(300,150,275,125,300,100,325,125, pctx);
+				drawSquare(325,125,350,100,375,125,350,150, pctx);
+				drawSquare(400,200,425,175,450,200,425,225, pctx);
+				drawSquare(425,225,450,250,425,275,400,250, pctx);
+			}
+			
+			function drawSquare(x1, y1, x2, y2, x3, y3, x4, y4, pctx){
+				pctx.beginPath();
+				pctx.moveTo(x1, y1);
+				pctx.lineTo(x2, y2);
+				pctx.lineTo(x3, y3);
+				pctx.lineTo(x4, y4);
+				pctx.lineTo(x1, y1);
+				pctx.fill();
+			}	
+				
+			function PyTree(pdepth){
+				if(pdepth === 3){
+					pctx.clearRect(0,0,500,500);
+					baseSquare();
+					itOne();
+					itTwo();
+					itThree();
+				}else if(pdepth === 2){
+					pctx.clearRect(0,0,500,500);
+					baseSquare();
+					itOne();
+					itTwo();
+				} else if(pdepth === 1){
+					pctx.clearRect(0,0,500,500);
+					baseSquare();
+					itOne();
+				}else{
+					pctx.clearRect(0,0,500,500);
+					baseSquare();
+				}
+			}
+		
 		</script>
 		
 	</body>
