@@ -89,6 +89,9 @@
 		<button onclick="PyTree(1);">1</button>
 		<button onclick="PyTree(2);">2</button>
 		<button onclick="PyTree(3);">3</button>
+		<button onclick="PyTree(4);">4</button>
+		<button onclick="PyTree(5);">5</button>
+		<button onclick="AnimatePyTree(pctx);">Animate</button>
 		
 		<script>
 		
@@ -99,15 +102,18 @@
 			
 			
 			function baseSquare(){
+				pctx.fillStyle="#291400";
 				drawSquare(200,400,200,300,300,300,300,400, pctx);
 			}
 			
 			function itOne(){
+				pctx.fillStyle="#3D1F00";
 				drawSquare(200,300,150,250,200,200,250,250, pctx);
 				drawSquare(250,250,300,200,350,250,300,300, pctx);
 			}
 			
 			function itTwo(){
+				pctx.fillStyle="#663300";
 				drawSquare(150,250,100,250,100,200,150,200, pctx);
 				drawSquare(150,200,150,150,200,150,200,200, pctx);
 				drawSquare(300,200,300,150,350,150,350,200, pctx);
@@ -115,6 +121,7 @@
 			}
 			
 			function itThree(){
+				pctx.fillStyle="#754719";
 				drawSquare(100,250,75,275,50,250,75,225, pctx);
 				drawSquare(75,225,50,200,75,175,100,200, pctx);
 				drawSquare(150,150,125,125,150,100,175,125, pctx);
@@ -123,6 +130,62 @@
 				drawSquare(325,125,350,100,375,125,350,150, pctx);
 				drawSquare(400,200,425,175,450,200,425,225, pctx);
 				drawSquare(425,225,450,250,425,275,400,250, pctx);
+			}
+			
+			function itFour(){
+				pctx.fillStyle="#006B00";
+				drawSquare(75,275,75,300,50,300,50,275, pctx);
+				drawSquare(50,275,25,275,25,250,50,250, pctx);
+				drawSquare(50,200,25,200,25,175,50,175, pctx);
+				drawSquare(50,175,50,150,75,150,75,175, pctx);
+				drawSquare(125,125,100,125,100,100,125,100, pctx);
+				drawSquare(125,100,125,75,150,75,150,100, pctx);
+				drawSquare(200,100,200,75,225,75,225,100, pctx);
+				drawSquare(225,100,250,100,250,125,225,125, pctx);
+				drawSquare(275,125,250,125,250,100,275,100, pctx);
+				drawSquare(275,100,275,75,300,75,300,100, pctx);
+				drawSquare(350,100,350,75,375,75,375,100, pctx);
+				drawSquare(375,100,400,100,400,125,375,125, pctx);
+				drawSquare(425,175,425,150,450,150,450,175, pctx);
+				drawSquare(450,175,475,175,475,200,450,200, pctx);
+				drawSquare(450,250,475,250,475,275,450,275, pctx);
+				drawSquare(450,275,450,300,425,300,425,275, pctx);
+			}
+			
+			function itFive(){
+				pctx.fillStyle="#008A00";
+				drawSquare(75,300,87.5,312.5,75,325,62.5,312.5, pctx);
+				drawSquare(62.5,312.5,50,325,37.5,312.5,50,300, pctx);
+				drawSquare(25,275,12.5,287.5,0,275,12.5,262.5, pctx);
+				drawSquare(12.5,262.5,0,250,12.5,237.5,25,250, pctx);
+				drawSquare(25,200,12.5,212.5,0,200,12.5,187.5, pctx);
+				drawSquare(12.5,187.5,0,175,12.5,162.5,25,175, pctx);
+				drawSquare(50,150,37.5,137.5,50,125,62.5,137.5, pctx);
+				drawSquare(62.5,137.5,75,125,87.5,137.5,75,150, pctx);
+				drawSquare(100,125,87.5,137.5,75,125,87.5,112.5, pctx);
+				drawSquare(87.5,112.5,75,100,87.5,87.5,100,100, pctx);
+				drawSquare(125,75,112.5,62.5,125,50,137.5,62.5, pctx);
+				drawSquare(137.5,62.5,150,50,162.5,62.5,150,75, pctx);
+				drawSquare(200,75,187.5,62.5,200,50,212.5,62.5, pctx);
+				drawSquare(212.5,62.5,225,50,237.5,62.5,225,75, pctx);
+				drawSquare(250,100,262.5,87.5,275,100,262.5,112.5, pctx);
+				drawSquare(262.5,112.5,275,125,262.5,137.5,250,125, pctx);
+				drawSquare(250,125,237.5,137.5,225,125,237.5,112.5, pctx);
+				drawSquare(237.5,112.5,225,100,237.5,87.5,250,100, pctx);
+				drawSquare(275,75,262.5,62.5,275,50,287.5,62.5, pctx);
+				drawSquare(287.5,62.5,300,50,312.5,62.5,300,75, pctx);
+				drawSquare(350,75,337.5,62.5,350,50,362.5,62.5, pctx);
+				drawSquare(362.5,62.5,375,50,387.5,62.5,375,75, pctx);
+				drawSquare(400,100,412.5,87.5,425,100,412.5,112.5, pctx);
+				drawSquare(412.5,112.5,425,125,412.5,137.5,400,125, pctx);
+				drawSquare(425,150,412.5,137.5,425,125,437.5,137.5, pctx);
+				drawSquare(437.5,137.5,450,125,462.5,137.5,450,150, pctx);
+				drawSquare(475,175,487.5,162.5,500,175,487.5,187.5, pctx);
+				drawSquare(487.5,187.5,500,200,487.5,212.5,475,200, pctx);
+				drawSquare(475,250,487.5,237.5,500,250,487.5,262.5, pctx);
+				drawSquare(487.5,262.5,500,275,487.5,287.5,475,275, pctx);
+				drawSquare(450,300,462.5,312.5,450,325,437.5,312.5, pctx);
+				drawSquare(437.5,312.5,425,325,412.5,312.5,425,300, pctx);
 			}
 			
 			function drawSquare(x1, y1, x2, y2, x3, y3, x4, y4, pctx){
@@ -136,7 +199,22 @@
 			}	
 				
 			function PyTree(pdepth){
-				if(pdepth === 3){
+				if(pdepth === 5){
+					pctx.clearRect(0,0,500,500);
+					baseSquare();
+					itOne();
+					itTwo();
+					itThree();
+					itFour();
+					itFive();
+				}else if(pdepth === 4){
+					pctx.clearRect(0,0,500,500);
+					baseSquare();
+					itOne();
+					itTwo();
+					itThree();
+					itFour();
+				}else if(pdepth === 3){
 					pctx.clearRect(0,0,500,500);
 					baseSquare();
 					itOne();
@@ -156,6 +234,16 @@
 					baseSquare();
 				}
 			}
+			
+			function AnimatePyTree(pctx){
+				pctx.clearRect(0,0,500,500);
+				baseSquare();
+				setTimeout(function(){itOne();}, 1000);
+				setTimeout(function(){itTwo();}, 2000);
+				setTimeout(function(){itThree();}, 3000);
+				setTimeout(function(){itFour();}, 4000);
+				setTimeout(function(){itFive();}, 5000);
+			}		
 		
 		</script>
 		
