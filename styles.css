@@ -1,0 +1,33 @@
+body{
+
+}
+
+#SierpinskiT{
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+h1,h2{
+	text-align: center;
+}
+
+#st-container{
+	width: 100%;
+	text-align: center;
+}
+
+canvas{
+	display: inline;
+}
+
+#PythagorasTree{
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+#pt-container{
+	width: 100%;
+	text-align: center;
+}
