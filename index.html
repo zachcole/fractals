@@ -191,7 +191,8 @@
 					\[ A_2 = A_0 + A_1 + (4 \cdot \left(\sqrt{\frac{1}{2}}\right)^{2}) \\= 2 + 2 + (4 \cdot \frac{1}{2}) \\= 2 + 2 + 2 \\= 6\]<br>
 					We can see that the sum of the areas of the same sized squares are equal to the original square's area.<br>
 					Thus, a generalized formula: \[ A_n = 2(n+1) \]<br>
-					In order to find the true area of the fractal, we need to find the limit of this formula as it approaches infinity.<br>
+					Even more general for side length s: \[ A_n = s^{2}(n+1) \]<br>
+					In order to find the true area of the fractal in our example, we need to find the limit of this formula as it approaches infinity.<br>
 					\[ \lim_{n \to \infty} 2(n+1) = 2(\infty+1)\\= 2(\infty)\\= \infty \]
 				</p>
 				
@@ -347,6 +348,21 @@
 						setTimeout(function(){itFive();}, 5000);
 					}		
 				
+				</script>
+			</div>
+			
+			<div>
+				<h1>Koch Snowflake</h1>
+				<div id="ks-container">
+					<canvas id="koch_canvas" width="400px" height="600px"></canvas>
+				</div>
+				
+				<script>
+					kcan = document.getElementById("koch_canvas");
+					kctx = kcan.getContext("2d");
+					
+					BaseTriangle(kctx);
+					
 				</script>
 			</div>
 		</div>	
