@@ -168,6 +168,33 @@
 				<button onclick="PyTree(5);">5</button>
 				<button onclick="AnimatePyTree(pctx);">Animate</button>
 				
+				<p>
+					The Pythagoras Tree fractal is constructed in the following manner:
+					<ol>
+						<li>Begin with a square.</li>
+						<li>Construct two squares on top of the original square such that, when the edges of all three squares meet, a 45-45-90 triangle is formed.</li>
+						<li>Repeat Step 2 recursively for each square formed.</li>
+					</ol>
+				</p>
+				
+				<h2>Perimeter</h2>
+				<p></p>
+				
+				<h2>Area</h2>
+				<p>
+					Let's assume we have a square with side lengths of &radic;2 units.<br>
+					So \[ A_0 = \sqrt{2} \cdot \sqrt{2} = \sqrt{2}^{2} = 2 \]
+					In order for one side to be the hypotenuse of a 45-45-90 triangle, we know the legs must be of length 1.<br>
+					Thus, the first iteration of the Pythagoras Tree gives us two squares with side length of 1.<br>
+					Notice that \[ A_1 = A_0 + (2 \cdot 1^{2}) = 2 + 2 = 4 \]<br>
+					If we follow the same steps in the second iteration, for the hypotenuse to be 1 unit, the legs must be of length &radic;1/2.
+					\[ A_2 = A_0 + A_1 + (4 \cdot \left(\sqrt{\frac{1}{2}}\right)^{2}) \\= 2 + 2 + (4 \cdot \frac{1}{2}) \\= 2 + 2 + 2 \\= 6\]<br>
+					We can see that the sum of the areas of the same sized squares are equal to the original square's area.<br>
+					Thus, a generalized formula: \[ A_n = 2(n+1) \]<br>
+					In order to find the true area of the fractal, we need to find the limit of this formula as it approaches infinity.<br>
+					\[ \lim_{n \to \infty} 2(n+1) = 2(\infty+1)\\= 2(\infty)\\= \infty \]
+				</p>
+				
 				<script>
 				
 					var pcan = document.getElementById("pytree_canvas");
